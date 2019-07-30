@@ -1,15 +1,36 @@
 provider "aws" {
   region = "us-west-1"
- }
+}
 
-resource "aws_instance" "my-instance" {
-	ami = "ami-056ee704806822732"
-	instance_type = "t2.micro"
-	user_data = "${file("startup.sh")}"
-	tags = {
-		Name = "Terraform"	
-		Batch = "5AM"
-    
-    }
+resource "aws_instance" "jenkins" {
+  
+  
+  ami = "ami-056ee704806822732"
+  instance_type = "t2.micro"
 
+  user_data = <<-EOF
+              #!/bin/bash
+              sudo update -y
+              sudo java 1.8.0 install -y
+			  sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat/jenkins.repo
+              sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+              sudo yum install jenkins -y
+			  sudo service jenkins start
+              EOF
+
+  tags = {
+    Name = "jenkins"
+  }
+}
+
+resource "aws_security_group" "instance" {
+  name = "jenkins12"
+
+  # Inbound HTTP from anywhere
+  ingress {
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
