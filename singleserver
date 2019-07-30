@@ -12,10 +12,10 @@ resource "aws_instance" "jenkins" {
               #!/bin/bash
               sudo update -y
               sudo java 1.8.0 install -y
-			  sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat/jenkins.repo
+	      sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat/jenkins.repo
               sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
               sudo yum install jenkins -y
-			  sudo service jenkins start
+              sudo service jenkins start
               EOF
 
   tags = {
