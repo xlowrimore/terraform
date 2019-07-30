@@ -1,0 +1,15 @@
+provider "aws" {
+  region = "us-west-1"
+ }
+
+resource "aws_instance" "my-instance" {
+	ami = "ami-056ee704806822732"
+	instance_type = "t2.micro"
+	user_data = "${file("startup.sh")}"
+	tags = {
+		Name = "Terraform"	
+		Batch = "5AM"
+    
+    }
+
+}
