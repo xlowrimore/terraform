@@ -7,21 +7,13 @@ provider "aws" {
 resource "aws_instance" "jenkins" {
   
   
-  ami = "ami-056ee704806822732"
+ami = "ami-056ee704806822732"
   instance_type = "t2.micro"
   key_name = "Nancy"
   security_groups = ["Jenkins"]
-  user_data = <<-EOF
-              #!/bin/bash
-              sudo yum update -y
-              sudo yum install java 1.8.0 -y
-	      sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat/jenkins.repo
-              sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
-              sudo yum install jenkins -y
-              sudo service jenkins start
-              EOF
-
-  tags = {
+  user_data = user_data = "${file("nameoffile.tpl")}"
+  
+tags = {
     Name = "jenkins"
   }
 }
