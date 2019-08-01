@@ -1,5 +1,5 @@
 # Terraforming Jenkins
-This project will launch a single server t2.micro EC2 instance with Amazon Linux AMI, update it's kernal, install java, install and start Jenkins.
+This project will launch a single server t2.micro EC2 instance with Amazon Linux AMI, create update it's kernal, install java, install and start Jenkins.
 
 # AWS CLI Setup
 1. https://docs.aws.amazon.com/cli/latest/userguide/install-windows.html
