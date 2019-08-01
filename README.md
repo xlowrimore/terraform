@@ -18,3 +18,8 @@ This project will launch a single server t2.micro EC2 instance with Amazon Linux
 
 
 6. Done
+
+
+###### Files you need replace
+key_name = "your AWS keyname"
+place init.tpl file in your Terraform directory 
