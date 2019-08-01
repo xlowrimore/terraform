@@ -14,7 +14,7 @@ This project will launch a single server t2.micro EC2 instance with Amazon Linux
 4. Set Access_Key & Secrect_Key from your AWS user
 
 
-5  Place 'init.tpl' file in your Terraform directory 
+5. Place 'init.tpl' file in your Terraform directory 
 
 
 6. In (LINE 3) shared_credentials_file, add: **/Users/"youruserprofile"**   to    ./aws/credentials"
